@@ -1,5 +1,5 @@
-"9780061120084", "To Kill a Mockingbird", Author("Harper Lee", "Harper Lee was an American novelist best known for her 1960 novel To Kill a Mockingbird, which won the Pulitzer Prize."), "1960", "Fiction", False,
-"9780451524935", "1984", Author("George Orwell", "George Orwell was an English novelist and essayist, journalist and critic, best known for his dystopian novel 1984 and the allegorical novella Animal Farm."), "1949", "Dystopian Fiction", True,
+"9780061120084", "To Kill a Mockingbird", Author("Harper Lee", "Harper Lee was an American novelist best known for her 1960 novel To Kill a Mockingbird, which won the Pulitzer Prize."), "1960", "Fiction", True,
+"9780451524935", "1984", Author("George Orwell", "George Orwell was an English novelist and essayist, journalist and critic, best known for his dystopian novel 1984 and the allegorical novella Animal Farm."), "1949", "Dystopian Fiction", False,
 "9780743273565", "The Great Gatsby", Author("F. Scott Fitzgerald", "F. Scott Fitzgerald was an American novelist and short-story writer, widely regarded as one of the greatest American writers of the 20th century."), "1925", "Classic Fiction", True,
 "9780679783268", "Pride and Prejudice", Author("Jane Austen", "Jane Austen was an English novelist known for her six major novels which critique and comment upon the British landed gentry at the end of the 18th century."), "1813", "Classic Fiction", True,
 "9780307277671", "Beloved", Author("Toni Morrison", "Toni Morrison was an American novelist, essayist, editor, and professor, known for her powerful novels exploring African-American culture and history."), "1987", "Historical Fiction", False,
@@ -23,4 +23,4 @@
 "9780307473479", "The Girl with the Dragon Tattoo", Author("Stieg Larsson", "Stieg Larsson was a Swedish journalist and writer, best known for his posthumously published Millennium trilogy, beginning with The Girl with the Dragon Tattoo."), "2005", "Mystery", True,
 "9780060838676", "American Gods", Author("Neil Gaiman", "Neil Gaiman is an English author of short fiction, novels, comic books, graphic novels, nonfiction, and films, known for his works of speculative fiction."), "2001", "Fantasy", True,
 "9780062315007", "The Handmaid's Tale", Author("Margaret Atwood", "Margaret Atwood is a Canadian poet, novelist, literary critic, and essayist, known for her works of fiction, including The Handmaid's Tale."), "1985", "Dystopian Fiction", True,
-
+"1234567890123", "Book Title", Author("Author", "Author lorem ipsum."), "1234", "Genre", False,

@@ -15,7 +15,7 @@ class User:
         if isinstance(library_id, str) and lib == "LIB" and num.isdigit() and len(num) == 6:
             return library_id
         else:
-            raise ValueError("Library ID must be 'LIB' plus exactly 6 digits.")
+            raise ValueError("\nLibrary ID must be 'LIB' plus exactly 6 digits.")
 
     def set_name(self, new_name):
         self.name = new_name # updates the user's name

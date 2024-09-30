@@ -24,12 +24,16 @@ def parse_books_db(database, library):
                 # If the line is empty, break
                 else:
                     break
+        return True
     except ValueError as ve:
         print(f"\nInvalid input: {ve}.")
+        return False
     except IndexError as ie:
         print(f"\nUser database file '{database}' possibly corrupted. Please check: {ie}.")
+        return False
     except Exception as e:
         print(f"\nAn error occurred when importing data: {e}")
+        return False
 
 def parse_users_db(database, library):
     '''Taking the filepath of the database (text file) and a library, this function parses the text file
@@ -52,35 +56,33 @@ def parse_users_db(database, library):
                     library.add_user(user)
                 else:
                     raise IndexError()
+        return True
     except IndexError as ie:
         print(f"\nUser database file '{database}' possibly corrupted. Please check: {ie}.")
+        return False
     except Exception as e:
         print(f"\nAn error occurred: {e}")
+        return False
 
 def save_databases(library, books_filepath, users_filepath):
     '''To save the databases to their respective text files, we take the library with the dictionaries
     and the filepaths for the books and users.'''
     # Opening the books filepath to write
-    with open(books_filepath, 'w') as file:
-        # Iterate over the books and writing them to the file
-        for book in library.books.values():
-            if book.is_available:
-                availability = "True"
-            else:
-                availability = "False"
-            file.write(f'"{book.isbn}", "{book.title}", Author("{book.author.name}", "{book.author.biog}"), "{book.publication_year}", "{book.genre}", {availability},\n')
-    # Opening the users filepath to write
-    with open(users_filepath, 'w') as file:
-        # Iterate over the users and writing them to the file
-        for user in library.users.values():
-            file.write(f'"{user.name}", "{user.library_id}", {user.borrowed_books},\n')
-
-library = Library()
-books_database = "/Users/elizabethyates/Desktop/My Documents/Coding/Coding Temple/CT Homework/Module 4 - Python OOP/Mini-Project - Library Management System/books.txt"
-users_database = "/Users/elizabethyates/Desktop/My Documents/Coding/Coding Temple/CT Homework/Module 4 - Python OOP/Mini-Project - Library Management System/users.txt"
-parse_books_db(books_database, library)
-parse_users_db(users_database, library)
-new_books_database = "/Users/elizabethyates/Desktop/My Documents/Coding/Coding Temple/CT Homework/Module 4 - Python OOP/Mini-Project - Library Management System/books_new.txt"
-new_users_database = "/Users/elizabethyates/Desktop/My Documents/Coding/Coding Temple/CT Homework/Module 4 - Python OOP/Mini-Project - Library Management System/users_new.txt"
-save_databases(library, new_books_database, new_users_database)
-print('Done!')
+    try: 
+        with open(books_filepath, 'w') as file:
+            # Iterate over the books and writing them to the file
+            for book in library.books.values():
+                if book.is_available:
+                    availability = "True"
+                else:
+                    availability = "False"
+                file.write(f'"{book.isbn}", "{book.title}", Author("{book.author.name}", "{book.author.biog}"), "{book.publication_year}", "{book.genre}", {availability},\n')
+        # Opening the users filepath to write
+        with open(users_filepath, 'w') as file:
+            # Iterate over the users and writing them to the file
+            for user in library.users.values():
+                file.write(f'"{user.name}", "{user.library_id}", {user.borrowed_books},\n')
+        return True
+    except Exception as e: 
+        print(f"\nAn error occurred: {e}")
+        return False

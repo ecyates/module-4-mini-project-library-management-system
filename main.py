@@ -6,19 +6,28 @@ import author_ops_menu as a_ops
 import book_ops_menu as b_ops
 import user_ops_menu as u_ops
 from file_handling import parse_books_db, parse_users_db, save_databases
+import os
 
 def main():
     '''In the main menu, we open and instantiate the library, bring in the lists of books and users from our saved databases,
     and present the menu options: 1) Book Operations, 2) User Operations, 3) Author Operations, and 4) Quit, and move to the next menu as selected. '''
     library = Library()
     # Retrieve data from databases
-    books_database = "/Users/elizabethyates/Desktop/My Documents/Coding/Coding Temple/CT Homework/Module 4 - Python OOP/Mini-Project - Library Management System/books.txt"
-    users_database = "/Users/elizabethyates/Desktop/My Documents/Coding/Coding Temple/CT Homework/Module 4 - Python OOP/Mini-Project - Library Management System/users.txt"
+    file_path = os.path.join(os.path.dirname(__file__))
+    book_database = file_path + "/book_database.txt"
+    user_database = file_path + "/user_database.txt"
+    
     # Parse databases
-    parse_books_db(books_database, library)
-    parse_users_db(users_database, library)
+    successful_parsing = parse_books_db(book_database, library) and parse_users_db(user_database, library)
+    
+    if successful_parsing: 
+        print("\n...databases uploading...Complete!")
+    else:
+        print("\nThere was an error uploading your library databases.")
+    
     # Welcome user and present the menu options
-    print("\nWelcome to the Library Management System!\n\nYour library was successfully uploaded!")
+    print("\nWelcome to the Library Management System!")
+
     while True:
         menu = input('''
 \033[1mMain Menu:\033[0m\n
@@ -32,8 +41,10 @@ Enter menu item (1-4): ''')
             # 4 = Quit
             if menu == "4":
                 # Save databases, inform user, and quit
-                save_databases(library, books_database, users_database)
-                print("\nData successfully saved!")
+                if save_databases(library, book_database, user_database):
+                    print("\nData successfully saved!")
+                else: 
+                    print("\nThere was an error saving data.")
                 break
             # 1 = Go to Book Operations Menu
             elif menu == "1":
